@@ -1,5 +1,6 @@
 import java.net.*;
 import java.io.*;
+import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SocketServer {
@@ -24,7 +25,6 @@ public class SocketServer {
         return users;
     }
 }
-
 
 class SocketClientHandler implements Runnable {
     private final Socket clientSocket;
@@ -105,17 +105,15 @@ class User {
 }
 
 class Verify {
+    /*
+    public static boolean check(User user) {
+        String token = user.getPassword();
+        String webContext = WebUtil.get("http://example.com/verify/" + user.getUsername() + ".txt");
+        return Objects.equals(webContext, token);
+    }
+     */
     public static boolean check(User user) {
         return true;
-
-        // TODO: verify
-        /*
-        String token = user.getUsername() + "-" + user.getPassword();
-        String web = "http://example.com/verify/" + user.getUsername() + ".txt";
-        // TODO: get web content
-        return web.equals(token);
-
-         */
     }
 }
 

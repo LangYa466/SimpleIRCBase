@@ -29,9 +29,12 @@ public class SocketClient {
                             isVerified = true;
                             canSend.set(true);
                             loginLatch.countDown();
-                        } else if (!isVerified) {
+                        }
+                        if (!isVerified) {
                             System.out.println("Login failed: " + serverMessage);
                             System.exit(0);
+                        } else {
+                            System.out.println("From Server: " + serverMessage);
                         }
                     }
                 } catch (IOException e) {
@@ -41,6 +44,7 @@ public class SocketClient {
                 }
             });
             serverMessageThread.start();
+
 
             // verify
             System.out.println("Please enter your username:");
